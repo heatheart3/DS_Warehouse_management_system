@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package logistics;
+
+// ------------------------------
+// 资源定义
+// ------------------------------
+message Item {
+  // 货号（资源唯一标识）
+  string sku = 1;
+  string name = 2;
+  string description = 3;
+  int64 quantity = 4;
+}
+
+// ------------------------------
+// 服务接口
+// ------------------------------
+service InventoryService {
+  // 1) Add Item Resource
+  rpc AddItem(AddItemRequest) returns (AddItemResponse);
+
+  // 2) Update Item Resource
+  rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
+
+  // 3) Take Item Resource（出库/扣减）
+  rpc TakeItem(TakeItemRequest) returns (TakeItemResponse);
+
+  // 4) Query Item Resource
+  rpc QueryItem(QueryItemRequest) returns (QueryItemResponse);
+}
+
+// ------------------------------
+// Add
+// ------------------------------
+message AddItemRequest {
+  Item item = 1;
+}
+
+message AddItemResponse {
+  Item item = 1;
+}
+
+// ------------------------------
+// Update
+// ------------------------------
+message UpdateItemRequest {
+  string sku = 1;   // 要更新的货号
+  string name = 2;
+  string description = 3;
+  int64 quantity = 4;
+}
+
+message UpdateItemResponse {
+  Item item = 1;
+}
+
+// ------------------------------
+// Take
+// ------------------------------
+message TakeItemRequest {
+  string sku = 1;   // 被扣减的货号
+  int64 amount = 2; // 扣减数量
+}
+
+message TakeItemResponse {
+  Item item = 1;    // 扣减后最新状态
+}
+
+// ------------------------------
+// Query
+// ------------------------------
+message QueryItemRequest {
+  string sku = 1;
+}
+
+message QueryItemResponse {
+  Item item = 1;
+}
