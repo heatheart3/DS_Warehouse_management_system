@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fwarehouse.proto\x12\tlogistics\"H\n\x04Item\x12\x0b\n\x03sku\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x10\n\x08quantity\x18\x04 \x01(\x03\"/\n\x0e\x41\x64\x64ItemRequest\x12\x1d\n\x04item\x18\x01 \x01(\x0b\x32\x0f.logistics.Item\"0\n\x0f\x41\x64\x64ItemResponse\x12\x1d\n\x04item\x18\x01 \x01(\x0b\x32\x0f.logistics.Item\"U\n\x11UpdateItemRequest\x12\x0b\n\x03sku\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x10\n\x08quantity\x18\x04 \x01(\x03\"3\n\x12UpdateItemResponse\x12\x1d\n\x04item\x18\x01 \x01(\x0b\x32\x0f.logistics.Item\".\n\x0fTakeItemRequest\x12\x0b\n\x03sku\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x03\"1\n\x10TakeItemResponse\x12\x1d\n\x04item\x18\x01 \x01(\x0b\x32\x0f.logistics.Item\"\x1f\n\x10QueryItemRequest\x12\x0b\n\x03sku\x18\x01 \x01(\t\"2\n\x11QueryItemResponse\x12\x1d\n\x04item\x18\x01 \x01(\x0b\x32\x0f.logistics.Item2\xac\x02\n\x10InventoryService\x12@\n\x07\x41\x64\x64Item\x12\x19.logistics.AddItemRequest\x1a\x1a.logistics.AddItemResponse\x12I\n\nUpdateItem\x12\x1c.logistics.UpdateItemRequest\x1a\x1d.logistics.UpdateItemResponse\x12\x43\n\x08TakeItem\x12\x1a.logistics.TakeItemRequest\x1a\x1b.logistics.TakeItemResponse\x12\x46\n\tQueryItem\x12\x1b.logistics.QueryItemRequest\x1a\x1c.logistics.QueryItemResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fwarehouse.proto\x12\tlogistics\"H\n\x04Item\x12\x0b\n\x03sku\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x10\n\x08quantity\x18\x04 \x01(\x03\"/\n\x0e\x41\x64\x64ItemRequest\x12\x1d\n\x04item\x18\x01 \x01(\x0b\x32\x0f.logistics.Item\"0\n\x0f\x41\x64\x64ItemResponse\x12\x1d\n\x04item\x18\x01 \x01(\x0b\x32\x0f.logistics.Item\"U\n\x11UpdateItemRequest\x12\x0b\n\x03sku\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x10\n\x08quantity\x18\x04 \x01(\x03\"3\n\x12UpdateItemResponse\x12\x1d\n\x04item\x18\x01 \x01(\x0b\x32\x0f.logistics.Item\".\n\x0fTakeItemRequest\x12\x0b\n\x03sku\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x03\"1\n\x10TakeItemResponse\x12\x1d\n\x04item\x18\x01 \x01(\x0b\x32\x0f.logistics.Item\"\x1f\n\x10QueryItemRequest\x12\x0b\n\x03sku\x18\x01 \x01(\t\"2\n\x11QueryItemResponse\x12\x1d\n\x04item\x18\x01 \x01(\x0b\x32\x0f.logistics.Item\"\x9d\x01\n\nLogRequest\x12\x14\n\x0cservice_name\x18\x01 \x01(\t\x12\x11\n\toperation\x18\x02 \x01(\t\x12\x11\n\tclient_ip\x18\x03 \x01(\t\x12\x0f\n\x07success\x18\x04 \x01(\x08\x12\x14\n\x0crequest_data\x18\x05 \x01(\t\x12\x15\n\rresponse_data\x18\x06 \x01(\t\x12\x15\n\rerror_message\x18\x07 \x01(\t\"/\n\x0bLogResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"J\n\x10QueryLogsRequest\x12\x14\n\x0cservice_name\x18\x01 \x01(\t\x12\x11\n\toperation\x18\x02 \x01(\t\x12\r\n\x05limit\x18\x03 \x01(\x05\"K\n\x11QueryLogsResponse\x12!\n\x04logs\x18\x01 \x03(\x0b\x32\x13.logistics.LogEntry\x12\x13\n\x0btotal_count\x18\x02 \x01(\x05\"\xae\x01\n\x08LogEntry\x12\x11\n\ttimestamp\x18\x01 \x01(\t\x12\x14\n\x0cservice_name\x18\x02 \x01(\t\x12\x11\n\toperation\x18\x03 \x01(\t\x12\x11\n\tclient_ip\x18\x04 \x01(\t\x12\x0f\n\x07success\x18\x05 \x01(\x08\x12\x14\n\x0crequest_data\x18\x06 \x01(\t\x12\x15\n\rresponse_data\x18\x07 \x01(\t\x12\x15\n\rerror_message\x18\x08 \x01(\t\"\x0e\n\x0cStatsRequest\"\xdd\x01\n\rStatsResponse\x12\x18\n\x10total_operations\x18\x01 \x01(\x05\x12\x1d\n\x15successful_operations\x18\x02 \x01(\x05\x12\x19\n\x11\x66\x61iled_operations\x18\x03 \x01(\x05\x12\x14\n\x0csuccess_rate\x18\x04 \x01(\x01\x12.\n\rservice_stats\x18\x05 \x03(\x0b\x32\x17.logistics.ServiceStats\x12\x32\n\x0foperation_stats\x18\x06 \x03(\x0b\x32\x19.logistics.OperationStats\"j\n\x0cServiceStats\x12\x14\n\x0cservice_name\x18\x01 \x01(\t\x12\r\n\x05total\x18\x02 \x01(\x05\x12\x0f\n\x07success\x18\x03 \x01(\x05\x12\x0e\n\x06\x66\x61iled\x18\x04 \x01(\x05\x12\x14\n\x0csuccess_rate\x18\x05 \x01(\x01\"i\n\x0eOperationStats\x12\x11\n\toperation\x18\x01 \x01(\t\x12\r\n\x05total\x18\x02 \x01(\x05\x12\x0f\n\x07success\x18\x03 \x01(\x05\x12\x0e\n\x06\x66\x61iled\x18\x04 \x01(\x05\x12\x14\n\x0csuccess_rate\x18\x05 \x01(\x01\"\x12\n\x10\x43learLogsRequest\"L\n\x11\x43learLogsResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x15\n\rcleared_count\x18\x03 \x01(\x05\x32\xac\x02\n\x10InventoryService\x12@\n\x07\x41\x64\x64Item\x12\x19.logistics.AddItemRequest\x1a\x1a.logistics.AddItemResponse\x12I\n\nUpdateItem\x12\x1c.logistics.UpdateItemRequest\x1a\x1d.logistics.UpdateItemResponse\x12\x43\n\x08TakeItem\x12\x1a.logistics.TakeItemRequest\x1a\x1b.logistics.TakeItemResponse\x12\x46\n\tQueryItem\x12\x1b.logistics.QueryItemRequest\x1a\x1c.logistics.QueryItemResponse2\x9d\x02\n\rLoggerService\x12=\n\x0cLogOperation\x12\x15.logistics.LogRequest\x1a\x16.logistics.LogResponse\x12\x46\n\tQueryLogs\x12\x1b.logistics.QueryLogsRequest\x1a\x1c.logistics.QueryLogsResponse\x12=\n\x08GetStats\x12\x17.logistics.StatsRequest\x1a\x18.logistics.StatsResponse\x12\x46\n\tClearLogs\x12\x1b.logistics.ClearLogsRequest\x1a\x1c.logistics.ClearLogsResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -49,6 +49,30 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_QUERYITEMREQUEST']._serialized_end=473
   _globals['_QUERYITEMRESPONSE']._serialized_start=475
   _globals['_QUERYITEMRESPONSE']._serialized_end=525
-  _globals['_INVENTORYSERVICE']._serialized_start=528
-  _globals['_INVENTORYSERVICE']._serialized_end=828
+  _globals['_LOGREQUEST']._serialized_start=528
+  _globals['_LOGREQUEST']._serialized_end=685
+  _globals['_LOGRESPONSE']._serialized_start=687
+  _globals['_LOGRESPONSE']._serialized_end=734
+  _globals['_QUERYLOGSREQUEST']._serialized_start=736
+  _globals['_QUERYLOGSREQUEST']._serialized_end=810
+  _globals['_QUERYLOGSRESPONSE']._serialized_start=812
+  _globals['_QUERYLOGSRESPONSE']._serialized_end=887
+  _globals['_LOGENTRY']._serialized_start=890
+  _globals['_LOGENTRY']._serialized_end=1064
+  _globals['_STATSREQUEST']._serialized_start=1066
+  _globals['_STATSREQUEST']._serialized_end=1080
+  _globals['_STATSRESPONSE']._serialized_start=1083
+  _globals['_STATSRESPONSE']._serialized_end=1304
+  _globals['_SERVICESTATS']._serialized_start=1306
+  _globals['_SERVICESTATS']._serialized_end=1412
+  _globals['_OPERATIONSTATS']._serialized_start=1414
+  _globals['_OPERATIONSTATS']._serialized_end=1519
+  _globals['_CLEARLOGSREQUEST']._serialized_start=1521
+  _globals['_CLEARLOGSREQUEST']._serialized_end=1539
+  _globals['_CLEARLOGSRESPONSE']._serialized_start=1541
+  _globals['_CLEARLOGSRESPONSE']._serialized_end=1617
+  _globals['_INVENTORYSERVICE']._serialized_start=1620
+  _globals['_INVENTORYSERVICE']._serialized_end=1920
+  _globals['_LOGGERSERVICE']._serialized_start=1923
+  _globals['_LOGGERSERVICE']._serialized_end=2208
 # @@protoc_insertion_point(module_scope)

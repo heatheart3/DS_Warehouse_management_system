@@ -5,7 +5,7 @@ import warnings
 
 import warehouse_pb2 as warehouse__pb2
 
-GRPC_GENERATED_VERSION = '1.75.1'
+GRPC_GENERATED_VERSION = '1.74.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -228,6 +228,210 @@ class InventoryService(object):
             '/logistics.InventoryService/QueryItem',
             warehouse__pb2.QueryItemRequest.SerializeToString,
             warehouse__pb2.QueryItemResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
+class LoggerServiceStub(object):
+    """日志服务
+    """
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.LogOperation = channel.unary_unary(
+                '/logistics.LoggerService/LogOperation',
+                request_serializer=warehouse__pb2.LogRequest.SerializeToString,
+                response_deserializer=warehouse__pb2.LogResponse.FromString,
+                _registered_method=True)
+        self.QueryLogs = channel.unary_unary(
+                '/logistics.LoggerService/QueryLogs',
+                request_serializer=warehouse__pb2.QueryLogsRequest.SerializeToString,
+                response_deserializer=warehouse__pb2.QueryLogsResponse.FromString,
+                _registered_method=True)
+        self.GetStats = channel.unary_unary(
+                '/logistics.LoggerService/GetStats',
+                request_serializer=warehouse__pb2.StatsRequest.SerializeToString,
+                response_deserializer=warehouse__pb2.StatsResponse.FromString,
+                _registered_method=True)
+        self.ClearLogs = channel.unary_unary(
+                '/logistics.LoggerService/ClearLogs',
+                request_serializer=warehouse__pb2.ClearLogsRequest.SerializeToString,
+                response_deserializer=warehouse__pb2.ClearLogsResponse.FromString,
+                _registered_method=True)
+
+
+class LoggerServiceServicer(object):
+    """日志服务
+    """
+
+    def LogOperation(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def QueryLogs(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetStats(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ClearLogs(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_LoggerServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'LogOperation': grpc.unary_unary_rpc_method_handler(
+                    servicer.LogOperation,
+                    request_deserializer=warehouse__pb2.LogRequest.FromString,
+                    response_serializer=warehouse__pb2.LogResponse.SerializeToString,
+            ),
+            'QueryLogs': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryLogs,
+                    request_deserializer=warehouse__pb2.QueryLogsRequest.FromString,
+                    response_serializer=warehouse__pb2.QueryLogsResponse.SerializeToString,
+            ),
+            'GetStats': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetStats,
+                    request_deserializer=warehouse__pb2.StatsRequest.FromString,
+                    response_serializer=warehouse__pb2.StatsResponse.SerializeToString,
+            ),
+            'ClearLogs': grpc.unary_unary_rpc_method_handler(
+                    servicer.ClearLogs,
+                    request_deserializer=warehouse__pb2.ClearLogsRequest.FromString,
+                    response_serializer=warehouse__pb2.ClearLogsResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'logistics.LoggerService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('logistics.LoggerService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class LoggerService(object):
+    """日志服务
+    """
+
+    @staticmethod
+    def LogOperation(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/logistics.LoggerService/LogOperation',
+            warehouse__pb2.LogRequest.SerializeToString,
+            warehouse__pb2.LogResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def QueryLogs(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/logistics.LoggerService/QueryLogs',
+            warehouse__pb2.QueryLogsRequest.SerializeToString,
+            warehouse__pb2.QueryLogsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetStats(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/logistics.LoggerService/GetStats',
+            warehouse__pb2.StatsRequest.SerializeToString,
+            warehouse__pb2.StatsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ClearLogs(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/logistics.LoggerService/ClearLogs',
+            warehouse__pb2.ClearLogsRequest.SerializeToString,
+            warehouse__pb2.ClearLogsResponse.FromString,
             options,
             channel_credentials,
             insecure,

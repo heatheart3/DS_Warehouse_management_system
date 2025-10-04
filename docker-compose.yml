@@ -1,34 +1,64 @@
 version: "3.9"
 
 services:
+  # Logger service for centralized logging
+  logger-service:
+    build: .
+    container_name: logger-service
+    command: ["python", "logger_service.py"]
+    ports:
+      - "50060:50060"
+
+  # Inventory warehouse services with logging enabled
   warehouse1:
     build: .
     container_name: warehouse1
-    command: ["python", "inventory_server.py", "--host", "0.0.0.0", "--port", "50051"]
+    command:
+      ["python", "inventory_server.py", "--host", "0.0.0.0", "--port", "50051"]
     ports:
       - "50051:50051"
+    depends_on:
+      - logger-service
+    environment:
+      LOGGER_ENDPOINT: "logger-service:50060"
 
   warehouse2:
     build: .
     container_name: warehouse2
-    command: ["python", "inventory_server.py", "--host", "0.0.0.0", "--port", "50051"]
+    command:
+      ["python", "inventory_server.py", "--host", "0.0.0.0", "--port", "50051"]
     ports:
       - "50052:50051"
+    depends_on:
+      - logger-service
+    environment:
+      LOGGER_ENDPOINT: "logger-service:50060"
 
   warehouse3:
     build: .
     container_name: warehouse3
-    command: ["python", "inventory_server.py", "--host", "0.0.0.0", "--port", "50051"]
+    command:
+      ["python", "inventory_server.py", "--host", "0.0.0.0", "--port", "50051"]
     ports:
       - "50053:50051"
+    depends_on:
+      - logger-service
+    environment:
+      LOGGER_ENDPOINT: "logger-service:50060"
 
   warehouse4:
     build: .
     container_name: warehouse4
-    command: ["python", "inventory_server.py", "--host", "0.0.0.0", "--port", "50051"]
+    command:
+      ["python", "inventory_server.py", "--host", "0.0.0.0", "--port", "50051"]
     ports:
       - "50054:50051"
+    depends_on:
+      - logger-service
+    environment:
+      LOGGER_ENDPOINT: "logger-service:50060"
 
+  # Client application with logging support
   inventory-client:
     build: .
     container_name: inventory-client
@@ -37,6 +67,8 @@ services:
       - warehouse2
       - warehouse3
       - warehouse4
+      - logger-service
     environment:
       WAREHOUSE_ENDPOINTS: '["warehouse1:50051", "warehouse2:50051", "warehouse3:50051", "warehouse4:50051"]'
+      LOGGER_ENDPOINT: "logger-service:50060"
     command: ["python", "client_app.py"]
